@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BAKI Fine Jewellery — Echoes of Beirut</title>
-<meta name="description" content="BAKI — contemporary fine jewellery drawn from the arches and qanater of Lebanon's traditional houses.">
-<link rel="icon" href="assets/images/favicon.png">
+<title>DEMO Fine Jewellery — Echoes of Beirut</title>
+<meta name="description" content="DEMO — contemporary fine jewellery drawn from the arches and qanater of Lebanon's traditional houses.">
+<link rel="icon" href="assets/images/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,11 +17,7 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero__media">
-      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/images/lifestyle-archways-bangle.png">
-        <source src="assets/media/baki-film.mp4" type="video/mp4">
-      </video>
     </div>
-    <button class="hero__sound hero__fade" id="heroToggle" aria-label="Pause video"><i><b></b><b></b><b></b></i><span>Playing</span></button>
     <a href="#intro" class="hero__scroll hero__fade">Scroll<i></i></a>
     <div class="hero__meta hero__fade">Collection N°01<br>Beirut, Lebanon</div>
     <div class="container hero__content">
@@ -51,13 +47,13 @@
       </div>
       <div class="intro__arches">
         <div class="col-side" data-speed=".05">
-          <figure class="arch-frame arch-frame--white" data-r="arch" style="--z:1.3"><img src="assets/images/luminous-arch-earrings.jpg" alt="The Luminous Arch Earrings"></figure>
+          <figure class="arch-frame arch-frame--white" data-r="arch" style="--z:1.3"></figure>
         </div>
         <div class="col-main" data-speed="-.03">
-          <figure class="arch-frame" data-r="arch" style="transition-delay:.15s"><img src="assets/images/lifestyle-archways-bangle.png" alt="The Archways Bangle on a stone balcony above Beirut at sunset"></figure>
+          <figure class="arch-frame" data-r="arch" style="transition-delay:.15s"></figure>
         </div>
         <div class="col-side" data-speed=".09">
-          <figure class="arch-frame arch-frame--white" data-r="arch" style="--z:1.05;transition-delay:.3s"><img src="assets/images/gate-of-echoes-pendant.jpg" alt="Large Gate of Echoes Pendant"></figure>
+          <figure class="arch-frame arch-frame--white" data-r="arch" style="--z:1.05;transition-delay:.3s"></figure>
         </div>
       </div>
     </div>
@@ -72,7 +68,7 @@
           <div class="craft__steps">
             <div class="craft__step on">
               <h2 class="t-title" data-r="words">It begins as a <em>sketch</em>.</h2>
-              <p class="fade">Every BAKI piece starts on paper — an arch, a window, a doorway remembered from Beirut's old houses.</p>
+              <p class="fade">Every DEMO piece starts on paper — an arch, a window, a doorway remembered from Beirut's old houses.</p>
             </div>
             <div class="craft__step">
               <h2 class="t-title" data-r="words">Then it becomes <em>gold</em>.</h2>
@@ -87,8 +83,8 @@
           <div class="craft__nav" data-r><span class="on">Sketch</span><i></i><span>Gold</span><i></i><span>Heirloom</span></div>
         </div>
         <div class="craft__frame" data-r="fade">
-          <img src="assets/images/sketch-archways-bangle.png" alt="Original sketch of the Archways Bangle">
-          <div class="craft__reveal"><img src="assets/images/archways-bangle.jpg" style="--z:1.08" alt="The finished Archways Bangle"></div>
+          
+          <div class="craft__reveal"></div>
         </div>
       </div>
     </div>
@@ -117,11 +113,11 @@
     </svg>
     <div class="container">
       <p class="t-label" data-r><svg class="icon-arch" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M6 78V32C6 16 17 5 30 1c13 4 24 15 24 31v46"/></svg>The founder</p>
-      <blockquote class="t-title story__quote" data-r="words">“More than jewellery, BAKI is my way of keeping a connection to where I <em>come from</em>.”</blockquote>
+      <blockquote class="t-title story__quote" data-r="words">“More than jewellery, DEMO is my way of keeping a connection to where I <em>come from</em>.”</blockquote>
       <div class="story__cols prose" data-stagger="140">
         <p data-r>Some passions begin long before we name them. Since childhood, I have been fascinated by design, gemstones, and the graceful qanater and intricate details of Lebanon's traditional houses.</p>
         <div data-r>
-          <p>Years later, those memories found their way into the sketches I drew during business meetings. BAKI was born from them — a contemporary interpretation of Lebanese heritage.</p>
+          <p>Years later, those memories found their way into the sketches I drew during business meetings. DEMO was born from them — a contemporary interpretation of Lebanese heritage.</p>
           <a class="link" href="contact.html">Book a private viewing</a>
         </div>
       </div>
@@ -138,14 +134,6 @@
 <script src="assets/js/app.js"></script>
 <script>
   document.getElementById("pieces").innerHTML = PRODUCTS.slice(0, 4).map((p, i) => card(p, i)).join("");
-
-  const v = document.getElementById("heroVideo"), tg = document.getElementById("heroToggle");
-  tg.onclick = () => {
-    v.paused ? v.play() : v.pause();
-    tg.classList.toggle("paused", v.paused);
-    tg.querySelector("span").textContent = v.paused ? "Paused" : "Playing";
-    tg.setAttribute("aria-label", v.paused ? "Play video" : "Pause video");
-  };
 </script>
 </body>
 </html>

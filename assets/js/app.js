@@ -317,6 +317,7 @@ function craftScene(){
   const frame = sec.querySelector(".craft__frame");
   const layer = sec.querySelector(".craft__reveal");
   const prod = layer.querySelector("img");
+  if (!prod) return;
   const zoom = parseFloat(getComputedStyle(prod).getPropertyValue("--z")) || 1;
   const steps = [...sec.querySelectorAll(".craft__step")];
   const labels = [...sec.querySelectorAll(".craft__nav span")];

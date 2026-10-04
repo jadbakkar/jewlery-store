@@ -1,9 +1,9 @@
 /* ==========================================================================
-   BAKI — site engine v2
+   DEMO — site engine v2
    data · layout · bag · search · motion system
    ========================================================================== */
 const IMG = "assets/images/";
-const LOGO = IMG + "logo-baki.png";
+const LOGO = IMG + "logo.svg";
 const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* z  = optical zoom so every piece reads at the same size on a white square
@@ -65,7 +65,7 @@ function layout(){
         <a href="contact.html"${cur("contact")}>Contact</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu"><i></i></button>
-      <a class="brand" href="index.html" aria-label="BAKI — Home"><img src="${LOGO}" alt="BAKI"></a>
+      <a class="brand" href="index.html" aria-label="DEMO — Home"><img src="${LOGO}" alt="DEMO"></a>
       <div class="tools">
         <button data-search aria-label="Search">${ICON.search}<span class="t-hide">Search</span></button>
         <button data-bag aria-label="Open bag">${ICON.bag}<span class="t-hide">Bag</span><span class="bag-count" id="bagCount">0</span></button>
@@ -100,9 +100,9 @@ function layout(){
         <div><h4>Maison</h4><ul><li><a href="index.html#maison">Our story</a></li><li><a href="contact.html">Private viewings</a></li><li><a href="contact.html#faq">Care &amp; FAQ</a></li></ul></div>
         <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/baki.jewellery" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
       </div>
-      <div class="footer__legal"><span>© ${new Date().getFullYear()} BAKI Fine Jewellery</span><span>Beirut — Lebanon</span></div>
+      <div class="footer__legal"><span>© ${new Date().getFullYear()} DEMO Fine Jewellery</span><span>Beirut — Lebanon</span></div>
     </div>
-    <div class="footer__word" aria-hidden="true">BAKI</div>
+    <div class="footer__word" aria-hidden="true">DEMO</div>
   </footer>
 
   <div class="scrim" id="scrim"></div>
@@ -133,8 +133,6 @@ function card(p, i = 0, reveal = true){
   <article class="card"${reveal ? ` data-r style="transition-delay:${(i % 4) * 90}ms"` : ""}>
     <a href="product.html?id=${p.id}" class="card__media" style="--z:${p.z || 1};--az:${p.az || 1}" aria-label="${esc(p.name)}">
       ${p.tag ? `<span class="card__tag">${p.tag}</span>` : ""}
-      <img src="${IMG + (p.thumb || p.img)}" alt="${esc(p.name)}" loading="lazy" class="${p.alt ? "has-alt" : ""}">
-      ${p.alt ? `<img class="alt${p.altCover ? " cover" : ""}" src="${IMG + p.alt}" alt="" loading="lazy">` : ""}
     </a>
     <button class="card__quick" data-add="${p.id}" aria-label="Add ${esc(p.name)} to bag">${ICON.plus}</button>
     <a href="product.html?id=${p.id}" class="card__info">
@@ -173,7 +171,7 @@ function renderBag(bump){
       : `Complimentary engraving included.`) + `<div><span style="width:${Math.min(100, total / GIFT_AT * 100)}%"></span></div>` : "";
   document.getElementById("bagItems").innerHTML = count ? bag.map((l, i) => { const p = byId(l.id); return `
     <div class="line-item">
-      <a class="li-img" href="product.html?id=${p.id}" style="--z:${p.z || 1}"><img src="${IMG + (p.thumb || p.img)}" alt=""></a>
+      <a class="li-img" href="product.html?id=${p.id}" style="--z:${p.z || 1}"></a>
       <div>
         <h5>${p.name}</h5>
         <div class="muted">${p.cat} · ${l.size}</div>
@@ -483,11 +481,11 @@ function boot(){
   preloader(() => { document.querySelector(".hero")?.classList.add("in"); startReveals(); });
 }
 
-window.BAKI = { observe, setBtn, card, money, byId, PRODUCTS, CATS, IMG, ICON, toast, addToBag };
+window.DEMO = { observe, setBtn, card, money, byId, PRODUCTS, CATS, IMG, ICON, toast, addToBag };
 
 /* Home only: insert the loading screen before the page paints */
 if (document.body.dataset.page === "home") document.body.insertAdjacentHTML("afterbegin", `
-  <div class="preloader" id="preloader" role="status" aria-label="Loading BAKI">
+  <div class="preloader" id="preloader" role="status" aria-label="Loading DEMO">
     <div class="preloader__inner">
       <svg class="preloader__arch" viewBox="0 0 60 80" preserveAspectRatio="none" aria-hidden="true">
         <path pathLength="1" d="M1 80V32C1 15 13 4 30 .5c17 3.5 29 14.5 29 31.5v48"/>

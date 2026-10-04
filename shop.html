@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shop — BAKI Fine Jewellery</title>
-<meta name="description" content="Shop the Echoes of Beirut collection: rings, necklaces, bracelets and earrings by BAKI.">
-<link rel="icon" href="assets/images/favicon.png">
+<title>Shop — DEMO Fine Jewellery</title>
+<meta name="description" content="Shop the Echoes of Beirut collection: rings, necklaces, bracelets and earrings by DEMO.">
+<link rel="icon" href="assets/images/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -86,8 +86,8 @@
     document.getElementById("shopTitle").innerHTML = state.cat === "All" ? `All <em>jewellery</em>` : state.cat;
     document.getElementById("shopIntro").textContent = INTRO[state.cat];
     document.getElementById("crumb").textContent = state.cat === "All" ? "Shop" : state.cat;
-    document.title = (state.cat === "All" ? "Shop" : state.cat) + " — BAKI Fine Jewellery";
-    BAKI.observe(grid);
+    document.title = (state.cat === "All" ? "Shop" : state.cat) + " — DEMO Fine Jewellery";
+    DEMO.observe(grid);
   }
 
   filters.addEventListener("click", e => {

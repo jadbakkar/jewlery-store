@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — BAKI Fine Jewellery</title>
+<meta name="description" content="Contact BAKI Fine Jewellery — private viewings, bespoke requests and client care.">
+<link rel="icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+
+<main>
+  <section class="contact-hero s-ivory bg-arches">
+    <div class="container contact-hero__grid">
+      <div>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></nav>
+        <h1 class="t-display" data-r="words">Let's <em>talk</em>.</h1>
+        <div class="prose" data-r><p>Whether you're choosing a gift, finding the right size or imagining a bespoke piece, we'll reply personally.</p></div>
+        <div class="info" data-stagger="110">
+          <div data-r><h4><svg class="icon-arch" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M6 78V32C6 16 17 5 30 1c13 4 24 15 24 31v46"/></svg>Client care</h4><a href="mailto:hello@bakijewellery.com">hello@bakijewellery.com</a></div>
+          <div data-r><h4><svg class="icon-arch" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M6 78V32C6 16 17 5 30 1c13 4 24 15 24 31v46"/></svg>Phone &amp; WhatsApp</h4><a href="tel:+9610000000">+961 00 000 000</a></div>
+          <div data-r><h4><svg class="icon-arch" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M6 78V32C6 16 17 5 30 1c13 4 24 15 24 31v46"/></svg>Atelier</h4><p>Beirut, Lebanon — by appointment</p></div>
+          <div data-r><h4><svg class="icon-arch" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M6 78V32C6 16 17 5 30 1c13 4 24 15 24 31v46"/></svg>Instagram</h4><a href="https://www.instagram.com/baki.jewellery" target="_blank" rel="noopener">@baki.jewellery</a></div>
+        </div>
+      </div>
+      <div data-speed="-.05">
+        <figure class="arch-frame" data-r="arch"><img src="assets/images/lifestyle-archways-bangle.png" alt="The Archways Bangle on a Beirut balcony at sunset"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad s-ivory" style="padding-top:0">
+    <div class="container form-wrap">
+      <div>
+        <p class="t-label" data-r>Write to us</p>
+        <h2 class="t-title" data-r="words">Send a <em>message</em></h2>
+        <p class="muted" data-r>Tell us what you're looking for and we'll get back to you within one business day.</p>
+      </div>
+
+      <div>
+        <form class="form" id="contactForm" novalidate>
+          <div class="full" data-r>
+            <div class="opt__label"><span>How can we help?</span></div>
+            <div class="topics" id="topics">
+              <button type="button" class="chip active" data-topic="General enquiry">General enquiry</button>
+              <button type="button" class="chip" data-topic="Private viewing">Private viewing</button>
+              <button type="button" class="chip" data-topic="Bespoke request">Bespoke request</button>
+              <button type="button" class="chip" data-topic="Order & sizing">Order &amp; sizing</button>
+            </div>
+          </div>
+          <div class="fld" data-r><input id="fn" name="first" placeholder=" " required autocomplete="given-name"><label for="fn">First name</label><span class="bar"></span><div class="err">Please enter your first name.</div></div>
+          <div class="fld" data-r><input id="ln" name="last" placeholder=" " required autocomplete="family-name"><label for="ln">Last name</label><span class="bar"></span><div class="err">Please enter your last name.</div></div>
+          <div class="fld" data-r><input id="em" name="email" type="email" placeholder=" " required autocomplete="email"><label for="em">Email</label><span class="bar"></span><div class="err">Please enter a valid email.</div></div>
+          <div class="fld" data-r><input id="ph" name="phone" type="tel" placeholder=" " autocomplete="tel"><label for="ph">Phone (optional)</label><span class="bar"></span></div>
+          <div class="fld full" data-r><select id="pc" name="piece"><option value="">Not sure yet</option></select><label for="pc">Piece of interest</label><span class="bar"></span></div>
+          <div class="fld full" data-r><textarea id="msg" name="message" placeholder=" " required></textarea><label for="msg">Your message</label><span class="bar"></span><div class="err">Please tell us a little about your request.</div></div>
+          <div class="full form__foot" data-r>
+            <label class="check"><input type="checkbox" id="consent"> I agree that BAKI may use my details to respond to this enquiry.</label>
+            <button class="btn" type="submit">Send message</button>
+          </div>
+        </form>
+        <div class="form-done" id="formDone">
+          <p class="t-label gold">Message received</p>
+          <h2 class="t-title">Thank you, <em id="doneName"></em>.</h2>
+          <p class="muted" style="margin-bottom:2rem">We'll be in touch personally within one business day.</p>
+          <a class="btn" href="shop.html">Explore the collection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pad s-sand" id="faq">
+    <div class="container faq__grid">
+      <div>
+        <p class="t-label" data-r>Client care</p>
+        <h2 class="t-title" data-r="words">Frequently <em>asked</em></h2>
+      </div>
+      <div class="accs" data-r style="margin-top:0">
+        <details class="acc" open><summary>How do I find my ring size? <i></i></summary><div class="acc__body">Book a private viewing and we'll size you in person, or contact us and we'll send you a sizing guide.</div></details>
+        <details class="acc"><summary>Do you ship internationally? <i></i></summary><div class="acc__body">Yes — every order ships insured, with tracking from Beirut to your door.</div></details>
+        <details class="acc"><summary>Can I request a bespoke piece? <i></i></summary><div class="acc__body">Choose “Bespoke request” above and tell us about your idea. We'll arrange a consultation to sketch it together.</div></details>
+        <details class="acc"><summary>How should I care for my jewellery? <i></i></summary><div class="acc__body">Store each piece separately in its pouch, avoid perfume and chlorine, and wipe gently with a soft, dry cloth.</div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/app.js"></script>
+<script>
+  const form = document.getElementById("contactForm");
+  const pieceSelect = document.getElementById("pc");
+  pieceSelect.insertAdjacentHTML("beforeend", PRODUCTS.map(p => `<option>${p.name}</option>`).join(""));
+  const preset = byId(new URLSearchParams(location.search).get("piece"));
+  if (preset) pieceSelect.value = preset.name;
+
+  let topic = preset ? "Private viewing" : "General enquiry";
+  const topics = document.getElementById("topics");
+  const setTopic = t => { topic = t; topics.querySelectorAll("[data-topic]").forEach(x => x.classList.toggle("active", x.dataset.topic === t)); };
+  setTopic(topic);
+  topics.addEventListener("click", e => { const b = e.target.closest("[data-topic]"); if (b) setTopic(b.dataset.topic); });
+
+  form.querySelectorAll("input,textarea").forEach(el => el.addEventListener("input", () => el.closest(".fld")?.classList.remove("invalid")));
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let ok = true;
+    form.querySelectorAll(".fld [required]").forEach(el => {
+      const bad = !el.value.trim() || (el.type === "email" && !/^\S+@\S+\.\S+$/.test(el.value));
+      el.closest(".fld").classList.toggle("invalid", bad);
+      if (bad) ok = false;
+    });
+    if (!document.getElementById("consent").checked){ ok = false; toast("Please accept the consent box"); }
+    if (!ok) return;
+    // TODO: connect to a form backend (Shopify contact form, Formspree, etc.)
+    document.getElementById("doneName").textContent = form.first.value.trim();
+    form.style.display = "none";
+    document.getElementById("formDone").classList.add("show");
+  });
+</script>
+</body>
+</html>

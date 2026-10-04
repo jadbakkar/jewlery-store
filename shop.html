@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — BAKI Fine Jewellery</title>
+<meta name="description" content="Shop the Echoes of Beirut collection: rings, necklaces, bracelets and earrings by BAKI.">
+<link rel="icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="shop">
+
+<main>
+  <header class="page-head s-ivory bg-arches bg-arches--right">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span id="crumb">Shop</span></nav>
+      <div class="page-head__row">
+        <h1 class="t-title" id="shopTitle" style="font-size:var(--t-display)">All <em>jewellery</em></h1>
+        <p class="muted" id="shopIntro"></p>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="container toolbar__inner">
+      <div class="filters" id="filters" role="tablist" aria-label="Filter by category"></div>
+      <div class="sort">
+        <span class="results" id="results"></span>
+        <label for="sort" class="sr-only">Sort by</label>
+        <select class="select" id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price, low to high</option>
+          <option value="price-desc">Price, high to low</option>
+          <option value="name">Alphabetical</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="container shop-body">
+    <div class="grid-4" id="grid"></div>
+  </div>
+
+  <section class="s-navy bg-arches">
+    <div class="container band">
+      <div>
+        <p class="t-label" style="color:var(--gold-3)" data-r>Private viewings</p>
+        <h2 class="t-title" data-r="words">See the pieces <em>in person</em>.</h2>
+      </div>
+      <a class="btn btn--light" href="contact.html" data-r>Book an appointment</a>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/app.js"></script>
+<script>
+  const INTRO = {
+    All: "Echoes of Beirut — pieces drawn from the arches, windows and doorways of Lebanon's traditional houses.",
+    Rings: "Bands crowned with arches and lanterns, made to be worn every day.",
+    Necklaces: "Gates, arabesques and dancing arches, suspended on fine chains.",
+    Bracelets: "A hinged bangle and a fluid arabesque, made for the wrist.",
+    Earrings: "Tall windows of light that move as you do.",
+  };
+  const params = new URLSearchParams(location.search);
+  const state = { cat: CATS.includes(params.get("cat")) ? params.get("cat") : "All", sort: "featured" };
+  const grid = document.getElementById("grid");
+  const filters = document.getElementById("filters");
+
+  function renderFilters(){
+    filters.innerHTML = ["All", ...CATS].map(c => {
+      const n = c === "All" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === c).length;
+      return `<button class="chip ${state.cat === c ? "active" : ""}" data-cat="${c}" role="tab" aria-selected="${state.cat === c}">${c}<sup>${n}</sup></button>`;
+    }).join("");
+  }
+  function render(){
+    let list = PRODUCTS.filter(p => state.cat === "All" || p.cat === state.cat);
+    if (state.sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
+    if (state.sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
+    if (state.sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name));
+
+    grid.innerHTML = list.map((p, i) => card(p, i)).join("") || `<div class="empty-state">No pieces in this category yet.</div>`;
+    document.getElementById("results").textContent = `${list.length} piece${list.length === 1 ? "" : "s"}`;
+    document.getElementById("shopTitle").innerHTML = state.cat === "All" ? `All <em>jewellery</em>` : state.cat;
+    document.getElementById("shopIntro").textContent = INTRO[state.cat];
+    document.getElementById("crumb").textContent = state.cat === "All" ? "Shop" : state.cat;
+    document.title = (state.cat === "All" ? "Shop" : state.cat) + " — BAKI Fine Jewellery";
+    BAKI.observe(grid);
+  }
+
+  filters.addEventListener("click", e => {
+    const b = e.target.closest("[data-cat]"); if (!b || b.dataset.cat === state.cat) return;
+    state.cat = b.dataset.cat;
+    const url = new URL(location);
+    state.cat === "All" ? url.searchParams.delete("cat") : url.searchParams.set("cat", state.cat);
+    history.replaceState(null, "", url);
+    renderFilters(); render();
+  });
+  document.getElementById("sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
+
+  renderFilters(); render();
+</script>
+</body>
+</html>

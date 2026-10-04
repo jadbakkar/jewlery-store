@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BAKI Fine Jewellery</title>
+<link rel="icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="product">
+
+<main>
+  <div class="container" style="padding-top:clamp(28px,3vw,44px)">
+    <nav class="crumbs" aria-label="Breadcrumb" id="crumbs" style="margin-bottom:0"></nav>
+  </div>
+
+  <div class="container pdp" id="pdp"></div>
+
+  <section class="piece-story pad s-navy bg-arches">
+    <div class="container piece-story__grid" id="pieceStory"></div>
+  </section>
+
+  <section class="pad s-ivory">
+    <div class="container">
+      <div class="head-row">
+        <div><p class="t-label" data-r>Complete the look</p><h2 class="t-title" data-r="words">You may also <em>love</em></h2></div>
+        <a class="link" href="shop.html" data-r>View all</a>
+      </div>
+      <div class="grid-4" id="related"></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/app.js"></script>
+<script>
+  const piece = byId(new URLSearchParams(location.search).get("id")) || PRODUCTS[0];
+  document.title = `${piece.name} — BAKI Fine Jewellery`;
+
+  // gallery shots: studio shot, hover shot, sketch — each with its own zoom
+  const shots = [
+    { src: piece.img, z: piece.z || 1 },
+    piece.alt && { src: piece.alt, z: piece.altCover ? 1 : (piece.az || 1), cover: piece.altCover },
+    piece.sketch && { src: piece.sketch, z: 1, cover: true },
+  ].filter(Boolean);
+  const pad = n => String(n).padStart(2, "0");
+  const archIcon = ICON.arch;
+
+  document.getElementById("crumbs").innerHTML =
+    `<a href="index.html">Home</a><span>/</span><a href="shop.html?cat=${piece.cat}">${piece.cat}</a><span>/</span><span>${piece.name}</span>`;
+
+  document.getElementById("pdp").innerHTML = `
+    <div class="gallery" data-r>
+      <div class="stage" id="stage" style="--z:${shots[0].z}">
+        <img id="stageImg" src="${IMG + shots[0].src}" alt="${piece.name}">
+        <span class="stage__count" id="stageCount">01 / ${pad(shots.length)}</span>
+      </div>
+      ${shots.length > 1 ? `<div class="thumbs">${shots.map((s, i) => `
+        <button class="${i ? "" : "active"}" data-shot="${i}" style="--z:${s.z}" aria-label="View image ${i + 1}">
+          <img src="${IMG + s.src}" alt="" class="${s.cover ? "cover" : ""}">
+        </button>`).join("")}</div>` : ""}
+    </div>
+
+    <div class="buy">
+      <p class="t-label gold" data-r>${archIcon}Echoes of Beirut · ${piece.cat}</p>
+      <h1 class="t-title" data-r="words">${piece.name}</h1>
+      <div class="buy__price" data-r><span class="t-sub" style="color:var(--text)">${money(piece.price)}</span><span>Insured shipping</span></div>
+      <div class="prose" data-r><p>${piece.desc}</p></div>
+
+      <div data-r>
+        <div class="opt">
+          <div class="opt__label"><span>Metal</span></div>
+          <div class="swatches"><button class="swatch active metal"><i></i>Yellow gold</button></div>
+        </div>
+        <div class="opt">
+          <div class="opt__label"><span>Size — <span id="sizeLbl">${piece.sizes[0]}</span></span>${piece.sizes.length > 1 ? `<a href="contact.html?piece=${piece.id}">Size guide</a>` : ""}</div>
+          <div class="swatches" id="sizes">${piece.sizes.map((s, i) => `<button class="swatch ${i ? "" : "active"}" data-size="${s}">${s}</button>`).join("")}</div>
+        </div>
+        <div class="buy__row">
+          <div class="qty"><button id="qMinus" aria-label="Decrease">−</button><span id="qVal">1</span><button id="qPlus" aria-label="Increase">+</button></div>
+          <button class="btn" id="addBtn">Add to bag — ${money(piece.price)}</button>
+        </div>
+        <a class="btn btn--ghost btn--block" href="contact.html?piece=${piece.id}">Book a private viewing</a>
+      </div>
+
+      <div class="accs" data-r>
+        <details class="acc" open><summary>Details <i></i></summary><div class="acc__body"><ul>
+          <li>Collection: Echoes of Beirut</li><li>Metal: yellow gold</li><li>Stones: ${piece.stones}</li>
+        </ul></div></details>
+        <details class="acc"><summary>Care <i></i></summary><div class="acc__body">Store your piece in its pouch, away from other jewellery. Remove before swimming or applying perfume, and clean gently with a soft, dry cloth.</div></details>
+        <details class="acc"><summary>Shipping &amp; returns <i></i></summary><div class="acc__body">Insured worldwide shipping. For returns and exchanges, contact our client care team.</div></details>
+      </div>
+    </div>`;
+
+  // the story behind the piece — its sketch if we have one, otherwise the piece itself in an arched window
+  document.getElementById("pieceStory").innerHTML = `
+    <figure class="arch-frame ${piece.sketch ? "" : "arch-frame--white"}" data-r="arch" style="--z:${piece.sketch ? 1 : piece.z || 1}">
+      <img src="${IMG + (piece.sketch || piece.img)}" alt="">
+    </figure>
+    <div>
+      <p class="t-label" style="color:var(--gold-3)" data-r>The story behind the piece</p>
+      <h2 class="t-title" data-r="words">Drawn from Beirut's <em>arches</em>.</h2>
+      <div class="prose" data-r>
+        <p>Every BAKI piece begins as a sketch of an arch, a window or a doorway from Lebanon's traditional houses — the qanater that have shaped the city's streets for centuries.</p>
+        <p>${piece.name} reinterprets that heritage for today: made to be worn, treasured, and passed on.</p>
+      </div>
+    </div>`;
+
+  // gallery behaviour
+  const stage = document.getElementById("stage"), stageImg = document.getElementById("stageImg");
+  document.querySelectorAll("[data-shot]").forEach(b => b.onclick = () => {
+    const i = +b.dataset.shot, s = shots[i];
+    document.querySelectorAll("[data-shot]").forEach(x => x.classList.toggle("active", x === b));
+    stageImg.style.opacity = 0;
+    setTimeout(() => {
+      stageImg.src = IMG + s.src;
+      stageImg.className = s.cover ? "cover" : "";
+      stage.style.setProperty("--z", s.z);
+      stageImg.style.opacity = 1;
+    }, 250);
+    document.getElementById("stageCount").textContent = `${pad(i + 1)} / ${pad(shots.length)}`;
+  });
+  stage.addEventListener("click", () => stage.classList.toggle("zoom"));
+  stage.addEventListener("mousemove", e => {
+    const r = stage.getBoundingClientRect();
+    stageImg.style.transformOrigin = `${(e.clientX - r.left) / r.width * 100}% ${(e.clientY - r.top) / r.height * 100}%`;
+  });
+  stage.addEventListener("mouseleave", () => stage.classList.remove("zoom"));
+
+  // options
+  let size = piece.sizes[0], qty = 1;
+  const addBtn = document.getElementById("addBtn");
+  document.getElementById("sizes").addEventListener("click", e => {
+    const b = e.target.closest("[data-size]"); if (!b) return;
+    size = b.dataset.size; document.getElementById("sizeLbl").textContent = size;
+    document.querySelectorAll("[data-size]").forEach(x => x.classList.toggle("active", x === b));
+  });
+  const setQty = n => {
+    qty = Math.max(1, Math.min(9, n));
+    document.getElementById("qVal").textContent = qty;
+    BAKI.setBtn(addBtn, `Add to bag — ${money(piece.price * qty)}`);
+  };
+  document.getElementById("qMinus").onclick = () => setQty(qty - 1);
+  document.getElementById("qPlus").onclick = () => setQty(qty + 1);
+  addBtn.onclick = () => { addToBag(piece.id, qty, size); toast(`${piece.name} added`); };
+
+  // related: same category first
+  const rel = [...PRODUCTS.filter(x => x.cat === piece.cat && x !== piece), ...PRODUCTS.filter(x => x.cat !== piece.cat)].slice(0, 4);
+  document.getElementById("related").innerHTML = rel.map((p, i) => card(p, i)).join("");
+</script>
+</body>
+</html>

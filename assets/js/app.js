@@ -9,31 +9,31 @@ const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* z  = optical zoom so every piece reads at the same size on a white square
    az = zoom for the hover image; altCover = hover image is a full-bleed photo */
 const PRODUCTS = [
-  { id:"archways-bangle", name:"The Archways Bangle", cat:"Bracelets", price:4800, tag:"Signature", z:1.08,
+  { id:"archways-bangle", name:"The Aurora Bangle", cat:"Bracelets", price:1290, tag:"Signature", z:1.08,
     img:"archways-bangle.jpg", thumb:"archways-bangle-sm.jpg", alt:"lifestyle-archways-bangle-sm.png", altCover:true,
     sketch:"sketch-archways-bangle.png", stones:"Diamonds", sizes:["S","M","L"],
-    desc:"A hinged bangle traced with the pointed arches of Beirut's old façades, centred on a pavé panel framed by two baguette-cut stones." },
-  { id:"gate-of-echoes-pendant", name:"Large Gate of Echoes Pendant", cat:"Necklaces", price:3000, tag:"Signature", z:1.05,
+    desc:"A hinged gold bangle with a smooth polished finish and a single row of sparkling stones." },
+  { id:"gate-of-echoes-pendant", name:"Halo Drop Pendant", cat:"Necklaces", price:890, tag:"Signature", z:1.05,
     img:"gate-of-echoes-pendant.jpg", thumb:"gate-of-echoes-pendant-sm.jpg", stones:"Diamonds", sizes:["42 cm","45 cm"],
-    desc:"A gate of light suspended on a fine chain — a triple arch drawn from the qanater of a traditional Lebanese house, outlined in pavé." },
-  { id:"luminous-arch-earrings", name:"The Luminous Arch Earrings", cat:"Earrings", price:2370, z:1.3,
+    desc:"A teardrop pendant on a fine chain, designed to catch the light with every step." },
+  { id:"luminous-arch-earrings", name:"The Nova Earrings", cat:"Earrings", price:640, z:1.3,
     img:"luminous-arch-earrings.jpg", thumb:"luminous-arch-earrings-sm.jpg", stones:"Diamonds", sizes:["One size"],
-    desc:"Elongated drops that echo the tall windows of Gemmayzeh, catching the light with every movement." },
-  { id:"lantern-ring", name:"The Lantern Ring", cat:"Rings", price:1970, tag:"New", z:1.6, az:1.6,
+    desc:"Elegant drop earrings with a modern shape, light enough for all-day wear." },
+  { id:"lantern-ring", name:"The Ember Ring", cat:"Rings", price:520, tag:"New", z:1.6, az:1.6,
     img:"lantern-ring.jpg", thumb:"lantern-ring-sm.jpg", alt:"lantern-ring-alt.jpg", stones:"Diamonds", sizes:["48","50","52","54","56"],
-    desc:"Inspired by the lanterns that glow in old Beirut doorways — a sculpted band crowned with a row of arches." },
-  { id:"arches-pinky-ring", name:"Arches Pinky Ring", cat:"Rings", price:1650, z:1.7, az:1.7,
+    desc:"A sculpted band with a warm glow, made to be stacked or worn alone." },
+  { id:"arches-pinky-ring", name:"Orbit Pinky Ring", cat:"Rings", price:410, z:1.7, az:1.7,
     img:"arches-pinky-ring.jpg", thumb:"arches-pinky-ring.jpg", alt:"arches-pinky-ring-alt.jpg", stones:"Diamonds", sizes:["44","46","48","50"],
-    desc:"A refined pinky ring shaped as a single arched window, its lattice set with a pavé outline." },
-  { id:"arabesque-bracelet", name:"Beirut Arabesque Bracelet", cat:"Bracelets", price:600, z:1,
+    desc:"A slim, refined pinky ring with a delicate stone-set outline." },
+  { id:"arabesque-bracelet", name:"Willow Chain Bracelet", cat:"Bracelets", price:180, z:1,
     img:"arabesque-bracelet.jpg", thumb:"arabesque-bracelet.jpg", stones:"—", sizes:["Adjustable"],
-    desc:"An engraved arabesque plaque on an adjustable cord. Light enough to stack, meaningful enough to wear alone." },
-  { id:"arabesque-necklace", name:"Beirut Arabesque Necklace", cat:"Necklaces", price:1250, z:1,
+    desc:"A simple chain bracelet with an adjustable clasp. Easy to stack, easy to wear." },
+  { id:"arabesque-necklace", name:"Willow Chain Necklace", cat:"Necklaces", price:350, z:1,
     img:"arabesque-necklace.jpg", thumb:"arabesque-necklace.jpg", stones:"—", sizes:["42 cm","45 cm"],
-    desc:"The arabesque motif of Lebanese mashrabiya, engraved on a slender bar and set on a delicate chain." },
-  { id:"dancing-arches-necklace", name:"Dancing Arches Necklace", cat:"Necklaces", price:1650, tag:"New", z:1.05,
+    desc:"A slender bar pendant on a delicate chain for everyday elegance." },
+  { id:"dancing-arches-necklace", name:"Stardust Necklace", cat:"Necklaces", price:460, tag:"New", z:1.05,
     img:"dancing-arches-necklace.jpg", thumb:"dancing-arches-necklace.jpg", stones:"Diamonds", sizes:["42 cm","45 cm"],
-    desc:"Interlaced arches meet inside a pavé-rimmed silhouette — movement, rhythm and light in a single pendant." },
+    desc:"A cluster of tiny stars set in gold — movement, rhythm and light in a single pendant." },
 ];
 const CATS = ["Rings","Necklaces","Bracelets","Earrings"];
 const byId = id => PRODUCTS.find(p => p.id === id);
@@ -79,7 +79,7 @@ function layout(){
       <a href="shop.html"><span>Shop</span></a>
       <a href="contact.html"><span>Contact</span></a>
     </nav>
-    <div class="menu__foot"><a href="https://www.instagram.com/baki.jewellery" target="_blank" rel="noopener">Instagram</a><span>Beirut</span></div>
+    <div class="menu__foot"><a href="https://www.instagram.com/demo.store" target="_blank" rel="noopener">Instagram</a><span>Demo City</span></div>
   </div>`);
 
   document.body.insertAdjacentHTML("beforeend", `
@@ -98,9 +98,9 @@ function layout(){
         <div><p class="footer__tag">A contemporary interpretation of Lebanese heritage.</p></div>
         <div><h4>Shop</h4><ul>${CATS.map(c => `<li><a href="shop.html?cat=${c}">${c}</a></li>`).join("")}</ul></div>
         <div><h4>Maison</h4><ul><li><a href="index.html#maison">Our story</a></li><li><a href="contact.html">Private viewings</a></li><li><a href="contact.html#faq">Care &amp; FAQ</a></li></ul></div>
-        <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/baki.jewellery" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+        <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/demo.store" target="_blank" rel="noopener">Instagram</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
       </div>
-      <div class="footer__legal"><span>© ${new Date().getFullYear()} DEMO Fine Jewellery</span><span>Beirut — Lebanon</span></div>
+      <div class="footer__legal"><span>© ${new Date().getFullYear()} DEMO Fine Jewellery</span><span>Your City</span></div>
     </div>
     <div class="footer__word" aria-hidden="true">DEMO</div>
   </footer>
@@ -120,7 +120,7 @@ function layout(){
   <div class="search" id="search" aria-hidden="true">
     <div class="container">
       <div class="search__top"><span class="t-label muted">Search the collection</span><button class="drawer__close" data-close>Close</button></div>
-      <input class="search__input" id="searchInput" type="search" placeholder="Rings, arches, pendant…" autocomplete="off">
+      <input class="search__input" id="searchInput" type="search" placeholder="Rings, pendant, bracelet…" autocomplete="off">
       <div class="search__res" id="searchRes"></div>
     </div>
   </div>
@@ -143,11 +143,11 @@ function card(p, i = 0, reveal = true){
 }
 
 /* ---------- Bag ---------- */
-const GIFT_AT = 3000;
+const GIFT_AT = 800;
 let bag = [];
-try { bag = JSON.parse(localStorage.getItem("baki.bag")) || []; } catch(e) {}
+try { bag = JSON.parse(localStorage.getItem("demo.bag")) || []; } catch(e) {}
 bag = bag.filter(l => byId(l.id));
-const save = () => { try { localStorage.setItem("baki.bag", JSON.stringify(bag)); } catch(e) {} };
+const save = () => { try { localStorage.setItem("demo.bag", JSON.stringify(bag)); } catch(e) {} };
 
 function addToBag(id, qty = 1, size){
   const p = byId(id); if (!p) return;
@@ -493,7 +493,7 @@ if (document.body.dataset.page === "home") document.body.insertAdjacentHTML("aft
         <path pathLength="1" d="M7 80V34c0-13 9-22 23-26 14 4 23 13 23 26v46"/>
       </svg>
       <img class="preloader__logo" src="${LOGO}" alt="">
-      <span class="preloader__tag">Fine Jewellery · Beirut</span>
+      <span class="preloader__tag">Demo Jewellery Store</span>
     </div>
   </div>`);
 document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", boot) : boot();
